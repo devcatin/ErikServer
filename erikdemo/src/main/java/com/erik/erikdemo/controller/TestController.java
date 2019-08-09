@@ -1,7 +1,8 @@
 package com.erik.erikdemo.controller;
 
-import com.erik.erikdemo.base.BaseConfig;
-import com.erik.erikdemo.bean.MsgBean;
+import com.erik.erikdemo.base.Result;
+import com.erik.erikdemo.base.ResultCode;
+import com.erik.erikdemo.bean.Banner;
 import com.erik.erikdemo.bean.UserBean;
 import com.erik.erikdemo.service.EnterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,38 +21,79 @@ public class TestController {
     private EnterService enterService;
 
     @GetMapping(value = "user/query")
-    public MsgBean getUserList() {
-        MsgBean msgBean = new MsgBean();
-        try {
-            List<UserBean> list = enterService.getUserList();
-            msgBean.setCode(BaseConfig.SUCCESSCODE);
-            msgBean.setMsg(BaseConfig.SUCCESSMSG);
-            msgBean.setData(list);
-        } catch (Exception e) {
-            e.printStackTrace();
-            msgBean.setCode(BaseConfig.ERRRORCODE);
-            msgBean.setMsg(BaseConfig.ERRRORMSG);
-            msgBean.setData(BaseConfig.ERRRORMSG);
+    public Result getUserList() {
+
+        List<UserBean> list = enterService.getUserList();
+
+        if (list != null) {
+            return Result.success(list);
+        } else  {
+            return Result.failure(ResultCode.FAILURE);
         }
-        return msgBean;
     }
 
     @RequestMapping(value = "user/getUserInfo")
     @ResponseBody
-    public MsgBean getUserInfo(Integer id) {
-        MsgBean msgBean = new MsgBean();
-        try {
-            UserBean userBean = enterService.getUserInfo(id);
-            msgBean.setCode(BaseConfig.SUCCESSCODE);
-            msgBean.setMsg(BaseConfig.SUCCESSMSG);
-            msgBean.setData(userBean);
-        } catch (Exception e) {
-            e.printStackTrace();
-            msgBean.setCode(BaseConfig.ERRRORCODE);
-            msgBean.setMsg(BaseConfig.ERRRORMSG);
-            msgBean.setData(BaseConfig.ERRRORMSG);
+    public Result getUserInfo(Integer id) {
+
+        UserBean userBean = enterService.getUserInfo(id);
+
+        if (userBean != null) {
+            return Result.success(userBean);
+        } else {
+            return Result.failure(ResultCode.FAILURE);
         }
-        return msgBean;
     }
+
+    @RequestMapping(value = "user/add")
+    @ResponseBody
+    public Result add(UserBean userBean) {
+
+        Integer code = enterService.add(userBean);
+
+        if (code > 0) {
+            return Result.success();
+        } else {
+            return Result.failure(ResultCode.FAILURE);
+        }
+    }
+
+    @RequestMapping(value = "user/delete")
+    @ResponseBody
+    public Result delete(Integer id) {
+        Integer code = enterService.delete(id);
+        if (code > 0) {
+            return Result.success();
+        } else {
+            return Result.failure(ResultCode.FAILURE);
+        }
+    }
+
+    @RequestMapping(value = "user/update")
+    @ResponseBody
+    public Result delete(Integer id, UserBean userBean) {
+
+        Integer code = enterService.update(id, userBean);
+
+        if (code > 0) {
+            return Result.success();
+        } else {
+            return Result.failure(ResultCode.FAILURE);
+        }
+    }
+
+    @RequestMapping(value = "home/getBannerList")
+    @ResponseBody
+    public Result getBannerList() {
+
+        List<Banner> list = enterService.getBannerList();
+
+        if (list != null) {
+            return Result.success(list);
+        } else  {
+            return Result.failure(ResultCode.FAILURE);
+        }
+    }
+
 
 }

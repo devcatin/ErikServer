@@ -2,28 +2,28 @@ package com.erik.erikdemo.bean;
 
 public class UserBean {
 
-    public int userId;  //用户编号
-    public String userName; //用户名称
+    public int id;  //用户编号
+    public String username; //用户名称
     public String password; //密码
     public int age;
     public String sex;
+    public String headimg;
 
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
-
 
     public String getPassword() {
         return password;
@@ -47,6 +47,14 @@ public class UserBean {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getHeadimg() {
+        return headimg;
+    }
+
+    public void setHeadimg(String headimg) {
+        this.headimg = headimg;
     }
 
 }
