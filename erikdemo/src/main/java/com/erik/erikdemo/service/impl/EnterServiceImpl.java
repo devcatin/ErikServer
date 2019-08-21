@@ -20,8 +20,8 @@ public class EnterServiceImpl implements EnterService {
     private BannerDao bannerDao;
 
     @Override
-    public List<UserBean> getUserList() {
-        return userDao.getUserList();
+    public List<UserBean> getUserList(Integer pageIndex, Integer pageSize) {
+        return userDao.getUserList(pageIndex, pageSize);
     }
 
     @Override

@@ -10,8 +10,8 @@ import java.util.List;
 @Component
 public interface UserDao {
 
-    @Select("SELECT * FROM user")
-    List<UserBean> getUserList();
+    @Select("SELECT * FROM user LIMIT #{pageIndex},#{pageSize}")
+    List<UserBean> getUserList(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize);
 
     @Select("SELECT * FROM user WHERE id = #{id}")
     UserBean getUserInfo(Integer id);

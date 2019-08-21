@@ -5,6 +5,7 @@ import com.erik.erikdemo.base.ResultCode;
 import com.erik.erikdemo.bean.Banner;
 import com.erik.erikdemo.bean.UserBean;
 import com.erik.erikdemo.service.EnterService;
+import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +21,15 @@ public class TestController {
     @Autowired
     private EnterService enterService;
 
-    @GetMapping(value = "user/query")
-    public Result getUserList() {
+    private static Integer pageSize = 5;
 
-        List<UserBean> list = enterService.getUserList();
+    @GetMapping(value = "user/query")
+    public Result getUserList(Integer pageIndex, Integer pageSize) {
+        if (pageSize == null) {
+            pageSize = this.pageSize;
+        }
+        Integer currentPageIndex = (pageIndex-1)*pageSize;
+        List<UserBean> list = enterService.getUserList(currentPageIndex, pageSize);
 
         if (list != null) {
             return Result.success(list);

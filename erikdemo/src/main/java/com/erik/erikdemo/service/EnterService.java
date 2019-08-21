@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface EnterService {
 
-    List<UserBean> getUserList();
+    List<UserBean> getUserList(Integer pageIndex, Integer pageSize);
 
     UserBean getUserInfo(Integer id);
 
