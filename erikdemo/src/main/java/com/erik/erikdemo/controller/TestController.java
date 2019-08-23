@@ -3,6 +3,7 @@ package com.erik.erikdemo.controller;
 import com.erik.erikdemo.base.Result;
 import com.erik.erikdemo.base.ResultCode;
 import com.erik.erikdemo.bean.Banner;
+import com.erik.erikdemo.bean.ClassBean;
 import com.erik.erikdemo.bean.UserBean;
 import com.erik.erikdemo.service.EnterService;
 import org.omg.PortableInterceptor.INACTIVE;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -101,5 +103,22 @@ public class TestController {
         }
     }
 
+    @RequestMapping(value = "home/getHomeData")
+    @ResponseBody
+    public Result getHomeData() {
+
+        List<Banner> banners = enterService.getBannerList();
+        List<ClassBean> classBeans = enterService.getClassList();
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("banners", banners);
+        map.put("classes", classBeans);
+
+        if (banners != null) {
+            return Result.success(map);
+        } else  {
+            return Result.failure(ResultCode.FAILURE);
+        }
+    }
 
 }

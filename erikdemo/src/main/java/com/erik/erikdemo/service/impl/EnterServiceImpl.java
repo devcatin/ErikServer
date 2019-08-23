@@ -1,8 +1,9 @@
 package com.erik.erikdemo.service.impl;
 
 import com.erik.erikdemo.bean.Banner;
+import com.erik.erikdemo.bean.ClassBean;
 import com.erik.erikdemo.bean.UserBean;
-import com.erik.erikdemo.dao.BannerDao;
+import com.erik.erikdemo.dao.HomeDao;
 import com.erik.erikdemo.dao.UserDao;
 import com.erik.erikdemo.service.EnterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class EnterServiceImpl implements EnterService {
     private UserDao userDao;
 
     @Autowired
-    private BannerDao bannerDao;
+    private HomeDao homeDao;
 
     @Override
     public List<UserBean> getUserList(Integer pageIndex, Integer pageSize) {
@@ -46,7 +47,12 @@ public class EnterServiceImpl implements EnterService {
 
     @Override
     public List<Banner> getBannerList() {
-        return bannerDao.getBannerList();
+        return homeDao.getBannerList();
+    }
+
+    @Override
+    public List<ClassBean> getClassList() {
+        return homeDao.getClassList();
     }
 
 }
