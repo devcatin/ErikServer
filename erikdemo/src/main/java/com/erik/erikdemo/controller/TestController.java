@@ -4,6 +4,7 @@ import com.erik.erikdemo.base.Result;
 import com.erik.erikdemo.base.ResultCode;
 import com.erik.erikdemo.bean.Banner;
 import com.erik.erikdemo.bean.ClassBean;
+import com.erik.erikdemo.bean.LiveBean;
 import com.erik.erikdemo.bean.UserBean;
 import com.erik.erikdemo.service.EnterService;
 import org.omg.PortableInterceptor.INACTIVE;
@@ -109,10 +110,12 @@ public class TestController {
 
         List<Banner> banners = enterService.getBannerList();
         List<ClassBean> classBeans = enterService.getClassList();
+        List<LiveBean> liveBeans = enterService.getLiveList();
 
         HashMap<String, Object> map = new HashMap<>();
         map.put("banners", banners);
         map.put("classes", classBeans);
+        map.put("lives", liveBeans);
 
         if (banners != null) {
             return Result.success(map);

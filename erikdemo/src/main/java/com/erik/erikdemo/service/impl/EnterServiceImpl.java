@@ -2,6 +2,7 @@ package com.erik.erikdemo.service.impl;
 
 import com.erik.erikdemo.bean.Banner;
 import com.erik.erikdemo.bean.ClassBean;
+import com.erik.erikdemo.bean.LiveBean;
 import com.erik.erikdemo.bean.UserBean;
 import com.erik.erikdemo.dao.HomeDao;
 import com.erik.erikdemo.dao.UserDao;
@@ -53,6 +54,11 @@ public class EnterServiceImpl implements EnterService {
     @Override
     public List<ClassBean> getClassList() {
         return homeDao.getClassList();
+    }
+
+    @Override
+    public List<LiveBean> getLiveList() {
+        return homeDao.getLiveList();
     }
 
 }

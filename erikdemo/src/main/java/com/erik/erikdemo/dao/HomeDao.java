@@ -3,6 +3,7 @@ package com.erik.erikdemo.dao;
 
 import com.erik.erikdemo.bean.Banner;
 import com.erik.erikdemo.bean.ClassBean;
+import com.erik.erikdemo.bean.LiveBean;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
@@ -18,5 +19,8 @@ public interface HomeDao {
 
     @Select("SELECT * FROM sys_class")
     List<ClassBean> getClassList();
+
+    @Select("SELECT * FROM sys_live")
+    List<LiveBean> getLiveList();
 
 }
