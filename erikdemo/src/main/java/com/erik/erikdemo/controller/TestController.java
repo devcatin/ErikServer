@@ -25,11 +25,15 @@ public class TestController {
     private EnterService enterService;
 
     private static Integer pageSize = 5;
+    private static Integer pageIndex = 1;
 
     @GetMapping(value = "user/query")
     public Result getUserList(Integer pageIndex, Integer pageSize) {
-        if (pageSize == null) {
+        if (null == pageSize) {
             pageSize = this.pageSize;
+        }
+        if (null == pageIndex) {
+            pageIndex = this.pageIndex;
         }
         Integer currentPageIndex = (pageIndex-1)*pageSize;
         List<UserBean> list = enterService.getUserList(currentPageIndex, pageSize);
