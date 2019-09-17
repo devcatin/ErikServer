@@ -4,7 +4,7 @@ public class Result {
 
     private static final long serialVersionUID = -3948389268046368059L;
 
-    private Integer code;
+    private int code;
 
     private String msg;
 
@@ -12,7 +12,7 @@ public class Result {
 
     public Result() {}
 
-    public Result(Integer code, String msg) {
+    public Result(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
@@ -48,11 +48,11 @@ public class Result {
         this.msg = code.message();
     }
 
-    public Integer getCode() {
+    public int getCode() {
         return this.code;
     }
 
-    public void setCode(final Integer code) {
+    public void setCode(final int code) {
         this.code = code;
     }
 

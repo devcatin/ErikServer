@@ -2,15 +2,15 @@ package com.erik.erikdemo.bean;
 
 public class Banner {
 
-    private Integer id;
+    private int id;
     private String imgUrl;
     private String conType;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

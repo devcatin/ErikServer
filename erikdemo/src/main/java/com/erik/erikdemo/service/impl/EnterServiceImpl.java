@@ -22,12 +22,12 @@ public class EnterServiceImpl implements EnterService {
     private HomeDao homeDao;
 
     @Override
-    public List<UserBean> getUserList(Integer pageIndex, Integer pageSize) {
+    public List<UserBean> getUserList(int pageIndex, int pageSize) {
         return userDao.getUserList(pageIndex, pageSize);
     }
 
     @Override
-    public UserBean getUserInfo(Integer id) {
+    public UserBean getUserInfo(int id) {
         return userDao.getUserInfo(id);
     }
 
@@ -37,12 +37,12 @@ public class EnterServiceImpl implements EnterService {
     }
 
     @Override
-    public int delete(Integer id) {
+    public int delete(int id) {
         return userDao.delete(id);
     }
 
     @Override
-    public int update(Integer id, UserBean userBean) {
+    public int update(int id, UserBean userBean) {
         return userDao.update(id, userBean);
     }
 

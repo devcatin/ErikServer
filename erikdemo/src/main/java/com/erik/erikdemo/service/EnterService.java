@@ -9,15 +9,15 @@ import java.util.List;
 
 public interface EnterService {
 
-    List<UserBean> getUserList(Integer pageIndex, Integer pageSize);
+    List<UserBean> getUserList(int pageIndex, int pageSize);
 
-    UserBean getUserInfo(Integer id);
+    UserBean getUserInfo(int id);
 
     int add(UserBean userBean);
 
-    int delete(Integer id);
+    int delete(int id);
 
-    int update(Integer id, UserBean userBean);
+    int update(int id, UserBean userBean);
 
     List<Banner> getBannerList();
 

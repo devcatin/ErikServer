@@ -9,16 +9,16 @@ public enum ResultCode implements Serializable {
 
     FAILURE(-1, "请求失败");
 
-    private Integer code;
+    private int code;
 
     private String message;
 
-    ResultCode(Integer code, String message) {
+    ResultCode(int code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public Integer code() {
+    public int code() {
         return this.code;
     }
 
@@ -35,13 +35,13 @@ public enum ResultCode implements Serializable {
         return name;
     }
 
-    public static Integer getCode(String name) {
+    public static int getCode(String name) {
         for (ResultCode item : ResultCode.values()) {
             if (item.name().equals(name)) {
                 return item.code;
             }
         }
-        return null;
+        return 0;
     }
 
 }

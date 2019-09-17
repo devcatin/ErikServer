@@ -24,18 +24,18 @@ public class TestController {
     @Autowired
     private EnterService enterService;
 
-    private static Integer pageSize = 5;
-    private static Integer pageIndex = 1;
+    private static int pageSize = 5;
+    private static int pageIndex = 1;
 
     @GetMapping(value = "user/query")
-    public Result getUserList(Integer pageIndex, Integer pageSize) {
-        if (null == pageSize) {
+    public Result getUserList(int pageIndex, int pageSize) {
+        if (0 == pageSize) {
             pageSize = this.pageSize;
         }
-        if (null == pageIndex) {
+        if (0 == pageIndex) {
             pageIndex = this.pageIndex;
         }
-        Integer currentPageIndex = (pageIndex-1)*pageSize;
+        int currentPageIndex = (pageIndex-1)*pageSize;
         List<UserBean> list = enterService.getUserList(currentPageIndex, pageSize);
 
         if (list != null) {
@@ -47,7 +47,7 @@ public class TestController {
 
     @RequestMapping(value = "user/getUserInfo")
     @ResponseBody
-    public Result getUserInfo(Integer id) {
+    public Result getUserInfo(int id) {
 
         UserBean userBean = enterService.getUserInfo(id);
 
@@ -62,7 +62,7 @@ public class TestController {
     @ResponseBody
     public Result add(UserBean userBean) {
 
-        Integer code = enterService.add(userBean);
+        int code = enterService.add(userBean);
 
         if (code > 0) {
             return Result.success();
@@ -73,8 +73,8 @@ public class TestController {
 
     @RequestMapping(value = "user/delete")
     @ResponseBody
-    public Result delete(Integer id) {
-        Integer code = enterService.delete(id);
+    public Result delete(int id) {
+        int code = enterService.delete(id);
         if (code > 0) {
             return Result.success();
         } else {
@@ -84,9 +84,9 @@ public class TestController {
 
     @RequestMapping(value = "user/update")
     @ResponseBody
-    public Result delete(Integer id, UserBean userBean) {
+    public Result delete(int id, UserBean userBean) {
 
-        Integer code = enterService.update(id, userBean);
+        int code = enterService.update(id, userBean);
 
         if (code > 0) {
             return Result.success();
